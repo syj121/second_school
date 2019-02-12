@@ -30,4 +30,23 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      messages:
+        blank: "%{attribute}为空"
+        too_short: "内容过短，%{attribute}长度应该大于%{count}个字符"
+        too_long: "内容过长，%{attribute}长度应该小于%{count}个字符"
+        taken: "%{attribute}已经存在"
+        confirmation: "确认%{attribute}和%{attribute}不一致"
+    models:
+      user: Dude  #User.model_name.human 会返回 "Dude"
+        # one: Dude
+        # other: Dudes
+    attributes:
+      # user/gender:  #嵌套模型
+      #   female: "Female"
+      #   male: "Male"
+      user:
+        login_name: "登录名"       #  翻译 User 的属性 "login" 为 "登录名"
+        password: "密码"
+        password_confirmation: "确认密码"
