@@ -1,0 +1,24 @@
+<div class="ibox-content">
+    <%= form_tag do_sign_in_auth_path, class: "m-t", role: "form" do %>
+        <div class="form-group">
+            <%= text_field_tag :login_name, "", class: "form-control", placeholder: "登录名", required: true %>
+        </div>
+        <div class="form-group">
+            <%= password_field_tag :password, "",class: "form-control", placeholder: "密码", required: true %>
+        </div>
+        <%= submit_tag "登录", class: "btn btn-primary block full-width m-b"%>
+
+        <%= link_to_void  do %>
+            <small>忘记密码？</small>
+        <% end -%>
+
+        <p class="text-muted text-center">
+            <small>还没有账号？</small>
+        </p>
+        <%= link_to  "创建账号", sign_up_auth_path, class: "btn btn-sm btn-white btn-block" %>
+    <% end -%>
+
+    <p class="m-t">
+        <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small>
+    </p>
+</div>

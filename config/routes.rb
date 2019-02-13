@@ -3,8 +3,18 @@ Rails.application.routes.draw do
 
   root "background/users#index"
 
+  resource :auth, only: [] do 
+    collection do 
+      delete :sign_out
+      get :sign_in
+      get :sign_up
+      post :do_sign_in
+      post :do_sign_up
+    end
+  end
+
   namespace :foreground do 
-	resources :users  	
+    resources :users  	
   end
 
   namespace :background  do

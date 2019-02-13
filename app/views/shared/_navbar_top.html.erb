@@ -100,12 +100,12 @@
             </ul>
         </li>
 
-
         <li>
-            <a href="login.html">
-                <i class="fa fa-sign-out"></i> 登出
-            </a>
+          <%= link_to sign_out_auth_path, method: :delete do %>
+            <i class="fa fa-sign-out">登出</i>
+          <% end -%>
         </li>
+
     </ul>
 
 </nav>
