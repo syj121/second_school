@@ -1,0 +1,5 @@
+zh-CN:
+  time:
+    formats:
+      default: "arrrround %H'ish"
+      short: "arrrround %H'ish"

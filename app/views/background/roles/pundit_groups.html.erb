@@ -1,0 +1,33 @@
+<%= content_for :head_title, "表单"%>
+
+<div class="am-g tpl-amazeui-form">
+	<div class="am-u-sm-12 am-u-md-9">
+		<%= form_for @role, url: save_pundit_groups_background_role_path(@role), html: {class: "am-form am-form-horizontal", method: :post} do |f|%>
+			<% @menus.each do |menu|%>
+				<div class="am-form-group">
+					<label class="am-u-sm-3 am-form-label"><%= menu[:menu_name]%>权限：</label>
+				</div>
+
+				<div class="am-form-group">
+					<% menu[:pundit_groups].each do |pundit_group|%>
+						<label class="am-u-sm-3 am-form-label"><%= pundit_group[:pundit_group_name] %>：</label>
+						<div class="am-u-sm-9">
+							<div class="tpl-switch">
+								<%= check_box_tag "pundit_groups[#{menu[:menu_id]}][]", pundit_group[:pundit_group_id], @checked.include?(pundit_group[:pundit_group_id]), class: "ios-switch bigswitch tpl-switch-btn" %>
+								<div class="tpl-switch-btn-view">
+								  <div></div>
+								</div>
+							</div>
+
+							<small></small>
+						</div>
+						
+					<% end%>
+				</div>
+			<% end %>
+
+			<%= render "shared/amaze/submit_button", f: f%>
+
+		<% end -%>
+	</div>
+</div>

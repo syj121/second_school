@@ -1,0 +1,27 @@
+<div class="am-g">
+	<div class="am-u-sm-12 am-u-md-6">
+		<div class="am-btn-toolbar">
+			<div class="am-btn-group am-btn-group-xs">
+				<%= link_to new_background_user_path(back: request.fullpath), class: "am-btn am-btn-default am-btn-success" do %>
+					<span class="am-icon-plus"></span> 新增
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+
+	<%= form_for @query, url: search_background_users_path do |f|%>
+		<div class="am-u-sm-12 am-u-md-3">
+			<div class="am-input-group am-input-group-sm">
+			  <%= f.text_field :login_name_cont, placeholder: "登录名", class: "am-form-field"%>
+			  <span class="am-input-group-btn">
+			    <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="submit"></button>
+			  </span>
+			</div>              
+		</div>
+	<% end %>
+
+
+
+
+</div>

@@ -13,41 +13,52 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    
-    <div id="wrapper">
+  <body data-type="index">
+    <%= render "shared/amaze/header"%>
 
-        <!-- 左侧导航栏 -->
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <%= render "shared/navbar_left"%>
-        </nav>
-        <!-- 左侧导航栏 END -->
+    <div class="tpl-page-container tpl-page-header-fixed">
+      <%= render "shared/amaze/left_menu"%>
 
-        <div id="page-wrapper" class="gray-bg dashbard-1">
-            <!-- 头部导航栏 -->
-            <div class="row border-bottom">
-              <%= render "shared/navbar_top"%>
+      <!-- 主体内容 -->
+      <div class="tpl-content-wrapper">
+        <!-- 标题 -->
+        <div class="tpl-content-page-title">Amaze UI 首页组件</div>
+        <!-- 标题 END -->
+
+        <!-- 导航栏 -->
+        <ol class="am-breadcrumb">
+          <li><a href="#" class="am-icon-home">首页</a></li>
+          <li><a href="#">分类</a></li>
+          <li class="am-active">内容</li>
+        </ol>
+        <!-- 导航栏 END -->
+
+        <!-- main -->
+        <div class="tpl-portlet-components">
+          <!-- title -->
+          <div class="portlet-title">
+            <div class="caption font-green bold">
+              <span class="am-icon-code"></span>
+              <%= content_for :head_title%>
             </div>
-            <!-- 头部导航栏 END -->
+          </div>
+          <!-- title end -->
 
-            <!-- 主体内容 -->
-            <div class="row  border-bottom white-bg dashboard-header minh-500">
-                <div class="col-sm-10">
-                    <%= yield %>
-                </div>
-            </div>
-            <!-- 主体内容 END -->
+          <div class="tpl-block">
+            <%= yield %>
+          </div>
 
-            <!-- 尾部信息 -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="wrapper wrapper-content"></div>
-                    <%= render "shared/footer"%>
-                </div>
-            </div>
-            <!-- 尾部信息 END -->
+          <!-- alert -->
+          <div class="tpl-alert"></div>
+          <!-- alert end -->
         </div>
+        <!-- main end -->
+
+      </div>
+      <!-- 主体内容 END -->
     </div>
+
+    <%= render "shared/amaze/footer"%>
 
   </body>
 </html>

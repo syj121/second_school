@@ -1,0 +1,28 @@
+<div class="am-g myapp-login">
+  <div class="myapp-login-logo-block  tpl-login-max">
+    <div class="myapp-login-logo-text">
+      <div class="myapp-login-logo-text">
+          Amaze UI<span> Login</span> <i class="am-icon-skyatlas"></i>         
+      </div>
+    </div>
+
+    <div class="login-font">
+        <i>Log In </i> or <span> Sign Up</span>
+    </div>
+
+    <div class="am-u-sm-10 login-am-center">
+      <%= form_tag do_sign_in_auth_path, class: "am-form" do %>
+        <fieldset>
+          <div class="am-form-group">
+            <%= text_field_tag :login_name, "", class: "form-control", placeholder: "登录名", required: true %>
+          </div>
+          <div class="am-form-group">
+            <%= password_field_tag :password, "",class: "form-control", placeholder: "密码", required: true %>
+          </div>
+          <p><button type="submit" class="am-btn am-btn-default">登录</button></p>
+        </fieldset>
+      <% end -%>
+    </div>
+
+  </div>
+</div>

@@ -4,6 +4,7 @@ class AuthsController < ApplicationController
 
 	#登录
 	def sign_in
+		render "sign_in_amaze"
 	end
 
 	#验证、保存登录信息

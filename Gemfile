@@ -66,3 +66,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt-ruby', '~> 3.1.5'  
 #断点调试
 gem 'pry-rails', '0.3.2'
+# 权限
+gem "strict_auth", path: "/mnt/f/my_gem/strict_auth"
+#查询
+gem 'ransack', '2.1.1'
+#分页
+gem 'kaminari', '1.1.1'

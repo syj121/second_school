@@ -1,9 +1,10 @@
-class Background::UsersController < ApplicationController
+class Background::UsersController < Background::ApplicationPunditController
 
-	before_action :get_user, except: [:index, :new, :create]
+	before_action :get_user
 
 	def index
-		@users = User.all
+		@query = User.ransack(params[:q])
+		@users = @query.result.page(params[:page])
 	end
 
 	def new
@@ -19,7 +20,7 @@ class Background::UsersController < ApplicationController
 	end
 
 	def update
-		@user.update(params[:user].permit!)
+		@user.update(user_params)
 		redirect_to action: :index
 	end
 
@@ -28,11 +29,18 @@ class Background::UsersController < ApplicationController
 
 	def destroy
 		@user.destroy
+		redirect_to action: :index
 	end
+
+	alias_method :search, :index
 
 	private
 	def get_user
-		@user = User.find(params[:id])
+		@user = User.find(params[:id]) if params[:id].present?
+	end
+
+	def user_params
+		params.require(:user).permit(:login_name, :real_name, :role_ids)
 	end
 
 end

@@ -18,7 +18,31 @@ Rails.application.routes.draw do
   end
 
   namespace :background  do
-    resources :users
-  end
+    resources :users do 
+      collection do 
+        post :search
+      end
+    end
+
+    resources :menus do 
+      collection do 
+        get :pundit_groups
+        post :search
+      end
+    end
+          
+    resources :roles do 
+      collection do 
+        post :search
+      end
+      member do 
+        get :menus
+        get :pundit_groups
+        post :save_menus
+        post :save_pundit_groups
+      end
+    end
+    
+  end #background end
 
 end
