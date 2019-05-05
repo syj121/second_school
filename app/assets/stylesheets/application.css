@@ -16,5 +16,6 @@
  
  *= require common
  *= require vendor_main
+ *= require validationEngine.jquery
  
  */

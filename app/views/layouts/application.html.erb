@@ -22,15 +22,15 @@
       <!-- 主体内容 -->
       <div class="tpl-content-wrapper">
         <!-- 标题 -->
-        <div class="tpl-content-page-title">Amaze UI 首页组件</div>
+        <!-- <div class="tpl-content-page-title"></div> -->
         <!-- 标题 END -->
 
         <!-- 导航栏 -->
-        <ol class="am-breadcrumb">
+<!--         <ol class="am-breadcrumb">
           <li><a href="#" class="am-icon-home">首页</a></li>
           <li><a href="#">分类</a></li>
           <li class="am-active">内容</li>
-        </ol>
+        </ol> -->
         <!-- 导航栏 END -->
 
         <!-- main -->
@@ -39,7 +39,7 @@
           <div class="portlet-title">
             <div class="caption font-green bold">
               <span class="am-icon-code"></span>
-              <%= content_for :head_title%>
+              <%= current_menu.name%>
             </div>
           </div>
           <!-- title end -->

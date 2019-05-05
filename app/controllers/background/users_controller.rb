@@ -32,7 +32,10 @@ class Background::UsersController < Background::ApplicationPunditController
 		redirect_to action: :index
 	end
 
-	alias_method :search, :index
+	def search
+		index
+		render action: :index
+	end
 
 	private
 	def get_user

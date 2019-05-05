@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
 		@current_user ||= User.find_by(login_name: session[:current_user]["login_name"])
 	end
 
+	def render_error_page(error_type)
+		return redirect_to "/#{error_type}.html"
+	end
+
 end

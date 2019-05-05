@@ -2,7 +2,7 @@
 
 <div class="am-g tpl-amazeui-form">
 	<div class="am-u-sm-12 am-u-md-9">
-		<%= form_for @role, url: save_pundit_groups_background_role_path(@role), html: {class: "am-form am-form-horizontal", method: :post} do |f|%>
+		<%= form_for @role, url: pundit_groups_save_background_role_path(@role), html: {class: "am-form am-form-horizontal", method: :post} do |f|%>
 			<% @menus.each do |menu|%>
 				<div class="am-form-group">
 					<label class="am-u-sm-3 am-form-label"><%= menu[:menu_name]%>权限：</label>

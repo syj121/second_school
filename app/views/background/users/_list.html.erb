@@ -1,0 +1,42 @@
+<div class="am-g">
+	<div class="am-u-sm-12">
+		<form class="am-form">
+			<table class="am-table am-table-striped am-table-hover table-main">
+				<thead>
+					<tr>
+						<th class="table-id">序号</th>
+						<th class="table-title">登录名</th>
+						<th class="table-type">真实姓名</th>
+						<th class="table-author am-hide-sm-only"></th>
+						<th class="table-date am-hide-sm-only">新增时间</th>
+						<th class="table-set">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each_with_index do |user, index|%>
+						<tr>
+							<td><%= index + 1%></td>
+							<td><%= user.login_name%></td>
+							<td><%= user.real_name%></td>
+							<td></td>
+							<td><%= l user.created_at%></td>
+							<td>										
+								<div class="am-btn-group am-btn-group-xs">
+									<%= link_to edit_background_user_path(user, back: request.fullpath), class: "am-btn am-btn-default am-btn-xs am-text-secondary" do %>
+										<span class="am-icon-pencil-square-o"></span> 编辑
+									<% end %>
+									<%= link_to background_user_path(user), method: :delete, class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" do %>
+										<span class="am-icon-trash-o"></span> 删除
+									<% end %>
+								</div>										
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+		</form>
+	</div>
+</div>
+
+<%= paginate @users, remote: true%>

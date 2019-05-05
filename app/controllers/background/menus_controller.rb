@@ -39,12 +39,13 @@ module Background
 		end
 
 		def destroy
+			@menu.destroy!
+			@menus = current_user.controllable_menus.ransack(JSON.parse(params[:q])).result.page(params[:page])
 		end
 
-		#根据权限名称，获取对应的权限组
-		def pundit_groups
-			#获取当前系统菜单下，用户的权限组
-			@pundit_groups = current_user.pundit_groups.where(controller_name: params[:controller_name])
+		def search
+			index
+			render action: :index
 		end
 
 		private

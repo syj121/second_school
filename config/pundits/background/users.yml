@@ -1,13 +1,19 @@
 ---
 users:
-  pundit_name: 用户管理
+  pundit_name: users
   pundit_groups:
     create:
-      pundit_name: show
-      pundits: new, create
+      pundit_name: 新增
+      pundits: new,create
     show:
-      pundit_name: show
-      pundits: show, index
+      pundit_name: 查看
+      pundits: show,index
+    edit:
+      pundit_name: 编辑
+      pundits: edit,update
     destroy:
-      pundit_name: destroy
+      pundit_name: 删除
       pundits: destroy
+    search:
+      pundit_name: search
+      pundits: search

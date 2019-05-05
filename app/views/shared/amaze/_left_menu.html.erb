@@ -8,7 +8,7 @@
 
       <% current_user.menus.each do |menu|%>
         <li class="tpl-left-nav-item">
-          <%= link_to menu.controller_path, class: "nav-link" do %>
+          <%= link_to menu.controller_path, class: "nav-link #{'active' if menu.controller_path == current_menu.try(:controller_path)}" do %>
             <i class="am-icon-wpforms"></i>
             <span><%= menu.name%></span>
           <% end %>
