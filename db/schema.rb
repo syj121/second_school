@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_04_26_050810) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "login_name", comment: "登录名"
-    t.string "real_name", comment: "真实姓名"
+    t.string "real_name", default: "匿名", comment: "真实姓名"
     t.string "password_digest", comment: "密码"
     t.integer "current_role_id", comment: "当前角色ID"
     t.datetime "created_at", null: false

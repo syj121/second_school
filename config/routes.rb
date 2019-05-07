@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   root "background/users#index"
 
+  #cable路由
+  mount ActionCable.server => "/cable"
+
+
   resource :auth, only: [] do 
     collection do 
       delete :sign_out

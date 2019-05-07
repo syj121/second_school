@@ -43,11 +43,6 @@ module Background
 			@menus = current_user.controllable_menus.ransack(JSON.parse(params[:q])).result.page(params[:page])
 		end
 
-		def search
-			index
-			render action: :index
-		end
-
 		private
 		def get_menu
 			if params[:id].present?

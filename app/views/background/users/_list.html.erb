@@ -14,18 +14,18 @@
 				</thead>
 				<tbody>
 					<% @users.each_with_index do |user, index|%>
-						<tr>
+						<tr id="user_<%= user.id%>">
 							<td><%= index + 1%></td>
-							<td><%= user.login_name%></td>
-							<td><%= user.real_name%></td>
+							<td id="user_login_name_<%= user.id%>"><%= user.login_name%></td>
+							<td id="user_real_name_<%= user.id%>"><%= user.real_name%></td>
 							<td></td>
 							<td><%= l user.created_at%></td>
 							<td>										
 								<div class="am-btn-group am-btn-group-xs">
-									<%= link_to edit_background_user_path(user, back: request.fullpath), class: "am-btn am-btn-default am-btn-xs am-text-secondary" do %>
+									<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-secondary", onclick: "new_record('#{edit_background_user_path(user)}', '编辑用户')" do %>
 										<span class="am-icon-pencil-square-o"></span> 编辑
 									<% end %>
-									<%= link_to background_user_path(user), method: :delete, class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only" do %>
+									<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only", onclick: "destroy_record('#{background_user_path(user)}', '编辑用户')" do %>
 										<span class="am-icon-trash-o"></span> 删除
 									<% end %>
 								</div>										

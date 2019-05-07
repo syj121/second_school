@@ -3,3 +3,5 @@
 @for $i from 0 through 1000{
   .minh-#{$i} {min-height: #{$i}px; }
 }
+
+.red {color: red}

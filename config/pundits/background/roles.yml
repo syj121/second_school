@@ -15,11 +15,8 @@ roles:
       pundit_name: 删除
       pundits: destroy
     pundit:
-      pundit_name: pundit
-      pundits: pundit_groups
+      pundit_name: 权限
+      pundits: pundit_groups,pundit_groups_save
     menus:
-      pundit_name: menus
-      pundits: menus
-    save:
-      pundit_name: save
-      pundits: save_menus,save_pundit_groups
+      pundit_name: 菜单
+      pundits: menus,menus_save

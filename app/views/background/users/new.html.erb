@@ -1,10 +1,8 @@
-<%= content_for :head_title, "表单"%>
-
-<div class="am-g tpl-amazeui-form">
+<div class="am-g tpl-amazeui-form layui-form">
 	<div class="am-u-sm-12 am-u-md-9">
-		<%= form_for [:background, @user], html: {class: "am-form am-form-horizontal"} do |f|%>
+		<%= form_for [:background, @user], html: {class: "am-form am-form-horizontal ajax_form"}, remote: true do |f|%>
 			<div class="am-form-group">
-				<label class="am-u-sm-3 am-form-label">登录名：</label>
+				<label class="am-u-sm-3 am-form-label"><%= require_span%>登录名：</label>
 				<div class="am-u-sm-9">
 					<%= f.text_field :login_name%>
 					<small></small>
@@ -12,7 +10,7 @@
 			</div>
 
 			<div class="am-form-group">
-				<label class="am-u-sm-3 am-form-label">真实姓名：</label>
+				<label class="am-u-sm-3 am-form-label"><%= require_span%>真实姓名：</label>
 				<div class="am-u-sm-9">
 					<%= f.text_field :real_name%>
 					<small></small>
@@ -20,7 +18,7 @@
 			</div>
 
 			<div class="am-form-group">
-				<label class="am-u-sm-3 am-form-label">密码：</label>
+				<label class="am-u-sm-3 am-form-label"><%= require_span%>密码：</label>
 				<div class="am-u-sm-9">
 					<%= f.text_field :password%>
 					<small></small>
@@ -28,7 +26,7 @@
 			</div>
 
 			<div class="am-form-group">
-				<label class="am-u-sm-3 am-form-label">确认密码：</label>
+				<label class="am-u-sm-3 am-form-label"><%= require_span%>确认密码：</label>
 				<div class="am-u-sm-9">
 					<%= f.text_field :password_confirmation%>
 					<small></small>

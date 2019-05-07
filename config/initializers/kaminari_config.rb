@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# #Kaminari.config.default_per_page
 Kaminari.configure do |config|
    config.default_per_page = 1
   # config.max_per_page = nil

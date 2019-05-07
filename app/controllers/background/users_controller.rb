@@ -9,19 +9,21 @@ class Background::UsersController < Background::ApplicationPunditController
 
 	def new
 		@user = User.new
+		render layout: "application_dialog"
 	end
 
 	def create
 		@user = User.create(params[:user].permit!)
-		redirect_to action: :index, notice: @user.error_msg
+		message = @user.new_record? ? @user.error_msg : "新增成功"
+		render json: {success: true, desc: message}
 	end
 
 	def edit
+		render layout: "application_dialog"
 	end
 
 	def update
-		@user.update(user_params)
-		redirect_to action: :index
+		@update_flag = @user.update(user_params)
 	end
 
 	def show
@@ -29,7 +31,7 @@ class Background::UsersController < Background::ApplicationPunditController
 
 	def destroy
 		@user.destroy
-		redirect_to action: :index
+		render json: {success: true, desc: "删除成功！"}
 	end
 
 	def search

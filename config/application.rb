@@ -17,5 +17,8 @@ module SecondSchool
     # the framework and any gems in your application.
 
     config.assets.enabled = true
+
+    #本地的cable默认只能跑在3000端口上，如果变更端口号，需要在application.rb中做如下配置
+    config.action_cable.disable_request_forgery_protection = true
   end
 end

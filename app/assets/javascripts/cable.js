@@ -8,6 +8,7 @@
 (function() {
   this.App || (this.App = {});
 
+  //连接到服务器。服务器通过 current_user 标识此连接。
   App.cable = ActionCable.createConsumer();
 
 }).call(this);

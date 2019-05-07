@@ -70,7 +70,7 @@ module Background
 	  end
 
 	  #保存菜单
-	  def save_menus 
+	  def menus_save 
 	    ActiveRecord::Base.transaction do 
 	    	@role.menu_roles.where.not(menu_id: params[:menus]).delete_all
 	    	@role.role_menus.where.not(menu_id: params[:menus]).delete_all
@@ -100,7 +100,7 @@ module Background
 	  end
 
 	  #保存角色的权限组
-	  def save_pundit_groups
+	  def pundit_groups_save
 	    ActiveRecord::Base.transaction do 
 	      params[:pundit_groups].each do |menu_id, pundit_group_ids|
 	        #保存角色的权限组
