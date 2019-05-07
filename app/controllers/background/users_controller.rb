@@ -34,11 +34,6 @@ class Background::UsersController < Background::ApplicationPunditController
 		render json: {success: true, desc: "删除成功！"}
 	end
 
-	def search
-		index
-		render action: :index
-	end
-
 	private
 	def get_user
 		@user = User.find(params[:id]) if params[:id].present?
