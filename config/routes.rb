@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
   namespace :background  do
     resources :users do
-      post :index_search
     end
 
     resources :menus do 

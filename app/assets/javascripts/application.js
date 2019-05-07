@@ -15,7 +15,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require cable
+// require cable
 //= require_tree .
 
 //= require vendor_main

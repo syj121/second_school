@@ -52,7 +52,7 @@ function destroy_record(delete_url){
 	  		}
 	  	},
 	  	error: function(){
-	  		layer.msg("系统异常，请稍后再试")
+	  		layer.msg("删除失败")
 	  	}
 	  })
 	}, function(){
