@@ -17,56 +17,45 @@ module Background
 	  # GET /roles/new
 	  def new
 	    @role = Role.new
+	    render layout: "application_dialog"
 	  end
 
 	  # GET /roles/1/edit
 	  def edit
+	  	render layout: "application_dialog"
 	  end
 
 	  # POST /roles
 	  # POST /roles.json
 	  def create
 	    @role = Role.new(role_params)
-
-	    respond_to do |format|
-	      if @role.save
-	        format.html { redirect_to action: :index, notice: 'Role was successfully created.' }
-	        format.json { render :show, status: :created, location: @role }
-	      else
-	        format.html { render :new }
-	        format.json { render json: @role.errors, status: :unprocessable_entity }
-	      end
+	    if @role.save
+	    	return render json: {success: true, desc: "新增成功"}
 	    end
+	    render json: {success: false, desc: "新增失败：#{@role.error_msg}"}	
 	  end
 
 	  # PATCH/PUT /roles/1
 	  # PATCH/PUT /roles/1.json
 	  def update
-	    respond_to do |format|
-	      if @role.update(role_params)
-	        format.html { redirect_to @role, notice: 'Role was successfully updated.' }
-	        format.json { render :show, status: :ok, location: @role }
-	      else
-	        format.html { render :edit }
-	        format.json { render json: @role.errors, status: :unprocessable_entity }
-	      end
-	    end
+	  	if @role.update(role_params)
+	  		return render json: {success: true, desc: "更新成功"}
+	  	end
+	  	render json: {success: false, desc: "更新失败：#{@role.error_msg}"}	
 	  end
 
 	  # DELETE /roles/1
 	  # DELETE /roles/1.json
 	  def destroy
 	    @role.destroy
-	    respond_to do |format|
-	      format.html { redirect_to roles_url, notice: 'Role was successfully destroyed.' }
-	      format.json { head :no_content }
-	    end
+	    render json: {success: true, desc: "删除成功！"}
 	  end
 
 	  #为角色分配菜单
 	  def menus
 	    @menus = current_user.menus
 	    @checked = @role.menus.pluck(:id)
+	    render layout: "application_dialog"
 	  end
 
 	  #保存菜单
@@ -82,7 +71,7 @@ module Background
 	        RoleMenu.find_or_create_by(menu_id: menu.id, role_id: @role.id)
 	      end
 	    end
-	    redirect_to action: :index
+	    render json: {success: true, desc: "设置成功"}
 	  end
 
 	  def pundit_groups
@@ -97,6 +86,7 @@ module Background
 	      }
 	    }
 	    @checked = @role.pundit_group_roles.pluck(:id)  #errors
+	    render layout: "application_dialog"
 	  end
 
 	  #保存角色的权限组
@@ -111,7 +101,7 @@ module Background
 	        }
 	      end
 	    end
-	    redirect_to action: :index
+	    render json: {success: true, desc: "设置成功"}
 	  end
 
 	  private

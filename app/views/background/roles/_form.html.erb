@@ -1,8 +1,6 @@
-<%= content_for :head_title, "表单"%>
-
 <div class="am-g tpl-amazeui-form">
 	<div class="am-u-sm-12 am-u-md-9">
-		<%= form_for [:background, @role], html: {class: "am-form am-form-horizontal"} do |f|%>
+		<%= form_for [:background, @role], html: {class: "am-form am-form-horizontal ajax_common_form"} do |f|%>
 			<div class="am-form-group">
 				<label class="am-u-sm-3 am-form-label">菜单名：</label>
 				<div class="am-u-sm-9">
@@ -24,3 +22,4 @@
 		<% end -%>
 	</div>
 </div>
+

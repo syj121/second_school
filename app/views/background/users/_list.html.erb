@@ -22,10 +22,10 @@
 							<td><%= l user.created_at%></td>
 							<td>										
 								<div class="am-btn-group am-btn-group-xs">
-									<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-secondary", onclick: "new_record('#{edit_background_user_path(user)}', '编辑用户')" do %>
+									<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-secondary", onclick: "common_dialog('#{edit_background_user_path(user)}', '编辑用户')" do %>
 										<span class="am-icon-pencil-square-o"></span> 编辑
 									<% end %>
-									<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only", onclick: "destroy_record('#{background_user_path(user)}', '编辑用户')" do %>
+									<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only", onclick: "destroy_record('#{background_user_path(user)}')" do %>
 										<span class="am-icon-trash-o"></span> 删除
 									<% end %>
 								</div>										

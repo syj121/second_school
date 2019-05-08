@@ -1,6 +1,6 @@
 $(function(){
-	// 表单异步提交
-	$("form.ajax_form").submit(function(){
+	// 新增表单 异步提交
+	$("form.ajax_common_form").submit(function(){
 		var this_form = $(this)
 		var current_page = parent.$("#current_page")[0]
 		$.ajax({
@@ -10,28 +10,31 @@ $(function(){
 			data: this_form.serialize(),
 			success: function (data) {
 				//异步刷新分页
-				if (data.success) {
+				if (data.success && current_page != undefined) {
 					current_page.click()
+				}else if (current_page == undefined) {
+					parent.location.reload()
 				}
-				parent.layer.closeAll()
 				parent.layer.msg(data.desc)
+				if (data.success) {
+					parent.layer.closeAll()
+				}
 			}
 		})
 		return false
 	})
-	// 表单异步提交 END
+	// 新增表单 异步提交 END
 })
 
 //新增数据通用dialog
-function new_record(new_url, title){
+function common_dialog(url, title){
 	layer.open({
-		id: "new_record_dialog",
+		id: "common_dialog",
 		title: title,
 	  type: 2,
 	  area: ['700px', '450px'],
-	  fixed: false, //不固定
 	  maxmin: true,
-	  content: new_url
+	  content: url
 	});
 }
 //新增数据通用dialog END
@@ -47,8 +50,10 @@ function destroy_record(delete_url){
 	  	url: delete_url,
 	  	success: function(data){
 	  		layer.msg(data.desc)
-	  		if (data.success) {
+	  		if (data.success && current_page != undefined) {
 	  			current_page.click()
+	  		}else if (data.success && current_page == undefined) {
+	  			parent.location.reload()
 	  		}
 	  	},
 	  	error: function(){
@@ -59,5 +64,11 @@ function destroy_record(delete_url){
 	});
 }
 // 删除数据通用dialog END
+// 
+// 关闭layer_dialog
+function cancel_dialog(){
+	parent.layer.closeAll()
+}
+// 关闭layer_dialog END
 
 

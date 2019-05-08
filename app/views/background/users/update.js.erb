@@ -1,9 +1,0 @@
-<% if @update_flag %>
-	parent.layer.closeAll();
-	parent.layer.msg("更新成功");
-	parent.$("#user_login_name_<%= @user.id %>").html("<%= @user.login_name%>");
-	parent.$("#user_real_name_<%= @user.id %>").html("<%= @user.real_name%>");
-<% else %>
-	parent.layer.msg("更新失败：<%= @user.error_msg%>");
-<% end %>
-

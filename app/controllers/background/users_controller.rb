@@ -13,9 +13,11 @@ class Background::UsersController < Background::ApplicationPunditController
 	end
 
 	def create
-		@user = User.create(params[:user].permit!)
-		message = @user.new_record? ? @user.error_msg : "新增成功"
-		render json: {success: true, desc: message}
+		@user = User.new(user_params)
+		if @user.save
+			return render json: {success: true, desc: "新增成功"}
+		end
+		render json: {success: false, desc: "新增失败：#{@user.error_msg}"}	
 	end
 
 	def edit
@@ -23,7 +25,10 @@ class Background::UsersController < Background::ApplicationPunditController
 	end
 
 	def update
-		@update_flag = @user.update(user_params)
+		if @user.update(user_params)
+			return render json: {success: true, desc: "更新成功"}
+		end
+		render json: {success: false, desc: "更新失败：#{@user.error_msg}"}		
 	end
 
 	def show

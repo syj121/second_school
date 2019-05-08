@@ -12,6 +12,7 @@ module Background
 		def new
 			@menu = Menu.new
 			@menus = current_user.menus.pluck(:system_menu_name, :controller_path)
+			render layout: "application_dialog"
 		end
 
 		def create
@@ -22,7 +23,7 @@ module Background
 				menu.save!
 				current_user.controllable_menus << menu
 			end
-			redirect_to action: :index
+			return render json: {success: true, desc: "新增成功"}
 		end
 
 		def show
@@ -30,17 +31,18 @@ module Background
 
 		def edit
 			@menus = current_user.menus.pluck(:system_menu_name, :controller_path)
+			render layout: "application_dialog"
 		end
 
 		def update
 			#保存系统权限菜单
 			@menu.update(params[:menu].permit!)
-			redirect_to action: :index
+			return render json: {success: true, desc: "更新成功"}
 		end
 
 		def destroy
 			@menu.destroy!
-			@menus = current_user.controllable_menus.ransack(JSON.parse(params[:q])).result.page(params[:page])
+			return render json: {success: true, desc: "删除成功"}
 		end
 
 		private
