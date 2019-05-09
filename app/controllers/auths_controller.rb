@@ -14,8 +14,8 @@ class AuthsController < ApplicationController
 			flash[:error] = "没有找到该用户"
 			redirect_to action: :sign_in
 		elsif user.authenticate_password(params[:password])
-			session[:current_user] = {login_name: params[:login_name]}
-			user.update(current_role_id: params[:role_id]) if user.current_role_id.blank?
+			session[:current_user] = {login_name: params[:login_name]} 
+			user.update(current_role_id: params[:role_id])
 			flash[:success] = "登录成功"
 			redirect_to background_users_path
 		else

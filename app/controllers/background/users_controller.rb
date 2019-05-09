@@ -48,7 +48,7 @@ class Background::UsersController < Background::ApplicationPunditController
 	end
 
 	def user_params
-		params.require(:user).permit(:login_name, :real_name, :role_ids, :password, :password_confirmation)
+		params.require(:user).permit(:login_name, :real_name, :password, :password_confirmation, role_ids: [])
 	end
 
 end
