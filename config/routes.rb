@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     resources :users do
     end
 
+    resources :user_infos, only: [:show, :edit, :update]
+
     resources :menus do 
       collection do 
         get :pundit_groups

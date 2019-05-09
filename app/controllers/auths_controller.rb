@@ -15,6 +15,7 @@ class AuthsController < ApplicationController
 			redirect_to action: :sign_in
 		elsif user.authenticate_password(params[:password])
 			session[:current_user] = {login_name: params[:login_name]}
+			user.update(current_role_id: params[:role_id]) if user.current_role_id.blank?
 			flash[:success] = "登录成功"
 			redirect_to background_users_path
 		else

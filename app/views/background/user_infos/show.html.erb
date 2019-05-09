@@ -1,0 +1,28 @@
+<div class="am-g">
+  <div class="tpl-form-body tpl-form-line">
+    <div class="am-form tpl-form-line-form">
+      <div class="am-form-group">
+        <label class="am-u-sm-3 am-form-label">登录名：</label>
+        <div class="am-u-sm-9"><%= current_user.login_name%></div>
+      </div>
+
+      <div class="am-form-group">
+        <label class="am-u-sm-3 am-form-label">真实姓名：</label>
+        <div class="am-u-sm-9"><%= current_user.real_name%></div>
+      </div>
+
+      <div class="am-form-group">
+        <label class="am-u-sm-3 am-form-label">头像：</label>
+        <div class="am-u-sm-9">
+          <%= image_tag(current_user.head_portraits[0].image_url.url, width: "50", height: "50", id: "head_portrait")%>
+        </div>
+      </div>
+
+      <div class="am-form-group">
+        <label class="am-u-sm-3 am-form-label">当前角色：</label>
+        <div class="am-u-sm-9"><%= current_user.current_role.name %></div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -72,3 +72,8 @@ gem "strict_auth", path: "/mnt/f/my_gem/strict_auth"
 gem 'ransack', '2.1.1'
 #分页
 gem 'kaminari', '1.1.1'
+#文件上传
+gem 'carrierwave', '1.3.1'
+gem 'mini_magick', '4.9.3'
+#表单
+gem "simple_form", "4.1.0"

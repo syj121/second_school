@@ -12,7 +12,7 @@ $(function(){
 				//异步刷新分页
 				if (data.success && current_page != undefined) {
 					current_page.click()
-				}else if (current_page == undefined) {
+				}else if (data.success && current_page == undefined) {
 					parent.location.reload()
 				}
 				parent.layer.msg(data.desc)

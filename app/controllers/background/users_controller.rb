@@ -12,6 +12,7 @@ class Background::UsersController < Background::ApplicationPunditController
 		render layout: "application_dialog"
 	end
 
+	#后阳新增用户数据，不新增个性化信息
 	def create
 		@user = User.new(user_params)
 		if @user.save
@@ -21,10 +22,12 @@ class Background::UsersController < Background::ApplicationPunditController
 	end
 
 	def edit
+		#没有头像，就新增
+		@user.head_portraits.new if @user.head_portraits.blank?
 		render layout: "application_dialog"
 	end
 
-	def update
+	def update 
 		if @user.update(user_params)
 			return render json: {success: true, desc: "更新成功"}
 		end
@@ -45,7 +48,7 @@ class Background::UsersController < Background::ApplicationPunditController
 	end
 
 	def user_params
-		params.require(:user).permit(:login_name, :real_name, :role_ids)
+		params.require(:user).permit(:login_name, :real_name, :role_ids, :password, :password_confirmation)
 	end
 
 end

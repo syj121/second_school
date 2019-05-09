@@ -1,0 +1,53 @@
+<div class="am-g tpl-amazeui-form">
+	<div class="am-u-sm-12 am-u-md-9">
+		<%= simple_form_for current_user, url: background_user_info_path(current_user), html: {class: "am-form am-form-horizontal"}, method: :patch, multipart: true  do |f|%>
+			<div class="am-form-group">
+				<label class="am-u-sm-3 am-form-label">登录名：</label>
+				<div class="am-u-sm-9">
+					<%= f.text_field :login_name%>
+					<small></small>
+				</div>
+			</div>
+
+			<div class="am-form-group">
+				<label class="am-u-sm-3 am-form-label">真实姓名：</label>
+				<div class="am-u-sm-9">
+					<%= f.text_field :real_name%>
+					<small></small>
+				</div>
+			</div>
+
+			<%#= render "shared/amaze/file_upload", locals: {f: f, image_type: "head_portrait"}%>
+			<div class="am-form-group">
+				<label class="am-u-sm-3 am-form-label">头像：</label>
+				<div class="am-u-sm-9">
+					<div class="am-form-group am-form-file layui-upload">
+						<%= f.simple_fields_for :head_portraits do |form|  %>
+							<div class="layui-upload-list">
+								<%= image_tag(form.object.image_url.url, width: "50", height: "50", id: "head_portrait")%>
+								<p></p>
+							</div>
+							<%= form.input_field :image_type, as: :hidden%>
+							<%= button_tag class: "am-btn am-btn-danger am-btn-sm layui-btn" do %>
+								<i class="am-icon-cloud-upload"></i> 添加头像图片
+							<% end %>
+							<%= form.input_field :image_url, accept: 'image/png,image/gif,image/jpeg',as: :file, id: "doc-form-file"%>
+						<% end %>						
+					</div>
+					<small></small>
+				</div>
+			</div>
+
+			<div class="am-form-group">
+				<label class="am-u-sm-3 am-form-label">分配角色：</label>
+				<div class="am-u-sm-9">
+					<%= f.select :role_ids, Role.all.pluck(:name, :id), {include_blank: ""} %>
+					<small></small>
+				</div>
+			</div>
+
+			<%= render partial: "shared/amaze/submit_button", locals: {f: f, cancel_dialog: false}%>
+
+		<% end -%>
+	</div>
+</div>

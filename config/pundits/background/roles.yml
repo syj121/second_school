@@ -1,6 +1,6 @@
 ---
 roles:
-  pundit_name: roles
+  pundit_name: 角色管理
   pundit_groups:
     create:
       pundit_name: 新增
@@ -15,8 +15,8 @@ roles:
       pundit_name: 删除
       pundits: destroy
     pundit:
-      pundit_name: 权限
+      pundit_name: pundit
       pundits: pundit_groups,pundit_groups_save
     menus:
-      pundit_name: 菜单
+      pundit_name: menus
       pundits: menus,menus_save

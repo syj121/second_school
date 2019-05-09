@@ -3,7 +3,7 @@
 namespace :pundit do 
 
 	desc "权限初始化  将权限组，写入yml文件中"
-	task :init => :environment do
+	task :init_yml => :environment do
 
 		#开发环境中，未加载，需要手动加载文件。
 		Rails.application.eager_load!
@@ -47,7 +47,11 @@ namespace :pundit do
 			     }}.to_yaml)
 			end
 		end
+	end
 
+
+	desc "权限初始化  将权限组，写入sql文件中"
+	task :init_sql => :environment do
 		#初始化数据库超级管理员权限
 		ActiveRecord::Base.transaction do 
 			#初始化角色表

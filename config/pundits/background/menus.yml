@@ -1,6 +1,6 @@
 ---
 menus:
-  pundit_name: menus
+  pundit_name: 菜单管理
   pundit_groups:
     create:
       pundit_name: 新增

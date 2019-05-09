@@ -1,6 +1,6 @@
 ---
 users:
-  pundit_name: users
+  pundit_name: 用户管理
   pundit_groups:
     create:
       pundit_name: 新增
@@ -14,6 +14,3 @@ users:
     destroy:
       pundit_name: 删除
       pundits: destroy
-    search:
-      pundit_name: search
-      pundits: search

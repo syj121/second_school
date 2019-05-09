@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_050810) do
+ActiveRecord::Schema.define(version: 2019_05_08_094004) do
 
   create_table "menu_roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "menu_id"
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(version: 2019_04_26_050810) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "image_url", comment: "用户图片地址"
+    t.string "image_type", comment: "用户图片分类，如：head_portrait头像"
+    t.boolean "usable", default: true, comment: "是否正在使用"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_images_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "login_name", comment: "登录名"
     t.string "real_name", default: "匿名", comment: "真实姓名"
@@ -85,4 +95,5 @@ ActiveRecord::Schema.define(version: 2019_04_26_050810) do
   add_foreign_key "role_menus", "roles"
   add_foreign_key "role_users", "roles"
   add_foreign_key "role_users", "users"
+  add_foreign_key "user_images", "users"
 end
