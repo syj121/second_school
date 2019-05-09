@@ -39,7 +39,7 @@
 			</div>
 
 			<div class="am-form-group">
-				<label class="am-u-sm-3 am-form-label">分配角色：</label>
+				<label class="am-u-sm-3 am-form-label">当前角色：</label>
 				<div class="am-u-sm-9">
 					<%= f.select :role_ids, Role.all.pluck(:name, :id), {include_blank: ""} %>
 					<small></small>

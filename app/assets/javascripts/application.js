@@ -23,5 +23,6 @@
 //= require jquery.validationEngine
 
 //= require common
+//= require_tree ./select2
 
 

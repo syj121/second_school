@@ -1,4 +1,7 @@
 $(function(){
+	//select2初始化
+	$(".select2").select2()
+
 	// 新增表单 异步提交
 	$("form.ajax_common_form").submit(function(){
 		var this_form = $(this)
