@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def current_user
-		@current_user ||= User.find_by(login_name: session[:current_user]["login_name"])
+		@current_user ||= User.find_by(login_name: session[:current_user][:login_name])
 	end
 
 	def render_error_page(error_type)

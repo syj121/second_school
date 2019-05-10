@@ -77,3 +77,5 @@ gem 'carrierwave', '1.3.1'
 gem 'mini_magick', '4.9.3'
 #表单
 gem "simple_form", "4.1.0"
+#redis存储cache
+gem "redis-rails", "5.0.2"

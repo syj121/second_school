@@ -24,5 +24,16 @@ module SecondSchool
     #文件类
     config.autoload_paths += Dir["#{Rails.root}/app/uploaders/*"]
 
+    #修改cache存储方式
+    config.cache_store = :redis_store, {
+      host: "localhost",
+      port: 6379,
+      db: 0,
+      password: "",
+      namespace: "second_school"
+    }, {
+      expires_in: 90.minutes
+    }
+
   end
 end

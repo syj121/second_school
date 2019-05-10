@@ -10,7 +10,9 @@ namespace :pundit do
 		common_methods = [:index, :new, :create, :edit, :update, :show, :destroy]
 		Background::ApplicationPunditController.subclasses.each do |controller|
 			controller_name = controller.controller_name
-			pundit_name = controller_name
+			#检查文件是否存在
+			old_yml = YAML::load_file("#{Rails.root}/config/pundits/#{controller.name.underscore.sub("_controller","")}.yml") rescue ""
+			pundit_name = old_yml[controller_name]["pundit_name"] rescue controller_name
 			#通用增删改查权限
 			pundit_groups = {
 				"create" => {
@@ -33,8 +35,10 @@ namespace :pundit do
 			#常规权限，例：menus/menus_save； caches/caches_do。名字相近为一组
 			regular_pundits = controller.instance_methods(false) - common_methods
 			regular_pundits.group_by{|r|r.to_s.split("_").first}.each do |pname, groups|
+				pundit_groups[pname] ||= {}
+				pundit_group_name = (old_yml[controller_name]["pundit_groups"][pname]["pundit_name"] rescue nil) || pname
 				pundit_groups[pname] = {
-					"pundit_name" => pname,
+					"pundit_name" => pundit_group_name,
 					"pundits" => groups.map(&:to_s).join(",")
 				}
 			end

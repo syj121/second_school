@@ -18,12 +18,12 @@ module Background
 
 		#检查是否有操作权限
 		def check_pundit
-			# if current_menu.blank?
-			# 	return render_error_page(401)
-			# end
-			# if current_pundit_actions.exclude?(action_name)
-			# 	return render_error_page(401)
-			# end
+			if current_menu.blank?
+				return render_error_page(401)
+			end
+			if current_pundit_actions.exclude?(action_name)
+				return render_error_page(401)
+			end
 		end
 
 		#当前菜单权限
@@ -32,7 +32,8 @@ module Background
 		end
 
 		def current_pundit_actions
-			@current_pundit_actions ||=  current_user.pundit_group_roles.where(menu_id: @current_menu.id).pluck(:action_list).map{|a|a.split(",")}.flatten
+			#@current_pundit_actions ||=  current_user.pundit_group_roles.where(menu_id: @current_menu.id).pluck(:action_list).map{|a|a.split(",")}.flatten
+			@current_pundit_actions ||= $redis.get("role_pundit_groups_#{current_user.current_role_id}_#{@current_menu.id}").to_s.split(",")
 		end
 
 	end

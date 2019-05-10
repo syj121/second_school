@@ -1,6 +1,6 @@
 ---
-roles:
-  pundit_name: 角色管理
+user_infos:
+  pundit_name: 个人信息
   pundit_groups:
     create:
       pundit_name: 新增
@@ -14,9 +14,3 @@ roles:
     destroy:
       pundit_name: 删除
       pundits: destroy
-    pundit:
-      pundit_name: 权限
-      pundits: pundit_groups,pundit_groups_save
-    menus:
-      pundit_name: 菜单
-      pundits: menus,menus_save
