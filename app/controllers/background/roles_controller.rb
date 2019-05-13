@@ -79,6 +79,7 @@ module Background
 	      {
 	        menu_id: menu.id,
 	        menu_name: menu.name,
+	        controller_path: menu.controller_path,
 	        pundit_groups: current_user.pundit_group_roles.where(menu_id: menu.id).map { |pundit_group|{
 	            pundit_group_id: pundit_group.id,
 	            pundit_group_name: pundit_group.group_name

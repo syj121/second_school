@@ -10,7 +10,9 @@
 
 				<div class="am-form-group">
 					<% menu[:pundit_groups].each do |pundit_group|%>
-						<label class="am-u-sm-3 am-form-label"><%= pundit_group[:pundit_group_name] %>：</label>
+						<label class="am-u-sm-3 am-form-label">
+							<%= Pundit.group_name(menu[:controller_path], pundit_group[:pundit_group_name]) %>：
+						</label>
 						<div class="am-u-sm-9">
 							<div class="tpl-switch">
 								<%= check_box_tag "pundit_groups[#{menu[:menu_id]}][]", pundit_group[:pundit_group_id], @checked.include?(pundit_group[:pundit_group_id]), class: "ios-switch bigswitch tpl-switch-btn" %>

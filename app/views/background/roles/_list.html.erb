@@ -19,13 +19,13 @@
 						<td id="role_index_<%= role.id%>"><%= l role.created_at%></td>
 						<td>										
 							<div class="am-btn-group am-btn-group-xs">
-								<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-secondary", onclick: "common_dialog('#{edit_background_role_path(role)}', '编辑角色')" do %>
+								<%= link_to_dialog edit_background_role_path(role), class: "am-btn am-btn-default am-btn-xs am-text-secondary",dialog: "common_dialog('编辑角色')" do %>
 									<span class="am-icon-pencil-square-o"></span> 编辑
 								<% end %>
-								<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-secondary", onclick: "common_dialog('#{menus_background_role_path(role)}', '设置菜单')" do %>
+								<%= link_to_dialog menus_background_role_path(role), class: "am-btn am-btn-default am-btn-xs am-text-secondar",dialog: "common_dialog('设置菜单')" do %>
 									<span class="am-icon-pencil-square-o"></span> 菜单
 								<% end %>
-								<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-secondary", onclick: "common_dialog('#{pundit_groups_background_role_path(role)}', '设置权限')" do %>
+								<%= link_to_dialog pundit_groups_background_role_path(role), class: "am-btn am-btn-default am-btn-xs am-text-secondar",dialog: "common_dialog('设置权限')" do %>
 									<span class="am-icon-pencil-square-o"></span> 权限
 								<% end %>
 								<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only", onclick: "destroy_record('#{background_role_path(role)}') " do %>

@@ -22,7 +22,7 @@
 							<td><%= l menu.created_at%></td>
 							<td>										
 								<div class="am-btn-group am-btn-group-xs">
-									<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-secondary", onclick: "common_dialog('#{edit_background_menu_path(menu)}', '编辑菜单')" do %>
+									<%= link_to_dialog edit_background_menu_path(menu), class: "am-btn am-btn-default am-btn-xs am-text-secondary",dialog: "common_dialog('编辑菜单')" do %>
 										<span class="am-icon-pencil-square-o"></span> 编辑
 									<% end %>
 									<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only", onclick: "destroy_record('#{background_menu_path(menu)}') " do %>

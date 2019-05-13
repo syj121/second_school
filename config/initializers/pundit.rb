@@ -57,4 +57,13 @@ module Pundit
 		menu_yml[controller_name]["pundit_name"]
 	end
 
+	#获取某个菜单下某个权限名
+	#请求示例：Pundit.pundit_group_name("menus", "create")
+	#返回示例：“创建”
+	def self.group_name(controller_path, pundit_group_name)
+		menu_yml = YAML::load_file "#{Rails.root}/config/pundits/#{controller_path}.yml"
+		controller_name = controller_path.split("/").last
+		menu_yml[controller_name]["pundit_groups"][pundit_group_name]["pundit_name"]
+	end
+
 end
