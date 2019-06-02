@@ -23,6 +23,8 @@ module SecondSchool
 
     #文件类
     config.autoload_paths += Dir["#{Rails.root}/app/uploaders/*"]
+    #cancancan权限
+    config.autoload_paths += Dir["#{Rails.root}/app/models/abilities"]
 
     #修改cache存储方式
     config.cache_store = :redis_store, {

@@ -59,7 +59,7 @@ namespace :pundit do
 		#初始化数据库超级管理员权限
 		ActiveRecord::Base.transaction do 
 			#初始化角色表
-			Role.find_or_create_by!(name: "超级管理员", desc: "超级管理员", category_type: "admin", id: 1)
+			role = Role.find_or_create_by!(name: "超级管理员", desc: "超级管理员", category_type: "admin", id: 1)
 			#初始化用户表
 			user = User.find_or_initialize_by(login_name: "super_admin", current_role_id: 1, id: 1)
 			user.password = "12345678"
@@ -76,10 +76,9 @@ namespace :pundit do
 				#系统菜单，权限组
 				Pundit.pundit_groups(controller_path).map { |pundit_group| 
 					#角色权限组
-					PunditGroupRole.find_or_create_by!(menu_id: menu.id, controller_path: controller_path, group_name: pundit_group[:group_name] , role_id: 1, action_list: pundit_group[:action_list])
+					pg = PunditGroup.find_or_create_by!(menu_id: menu.id, controller_path: controller_path, group_name: pundit_group[:group_name], action_list: pundit_group[:action_list])
+					role.pundit_groups << pg
 				}
-				#角色可管理的菜单
-				RoleMenu.find_or_create_by(menu_id: menu.id, role_id: 1)
 			}
 			#用户角色表
 			RoleUser.find_or_create_by!(role_id: 1, user_id: 1)

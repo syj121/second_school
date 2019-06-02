@@ -1,16 +1,13 @@
 module Background
 	class MenusController < Background::ApplicationPunditController
 
-		before_action :get_menu
-
 		#当前用户的菜单
 		def index
-			@query = current_user.controllable_menus.ransack(params[:q])
+			@query = current_user.menus.ransack(params[:q])
 			@menus = @query.result.page(params[:page])
 		end
 
 		def new
-			@menu = Menu.new
 			@menus = current_user.menus.pluck(:system_menu_name, :controller_path)
 			render layout: "application_dialog"
 		end
@@ -21,7 +18,6 @@ module Background
 				menu = Menu.new(params[:menu].permit!)
 				menu.system_menu_name = Pundit.pundit_name(menu.controller_path)
 				menu.save!
-				current_user.controllable_menus << menu
 			end
 			return render json: {success: true, desc: "新增成功"}
 		end
@@ -36,7 +32,7 @@ module Background
 
 		def update
 			#保存系统权限菜单
-			@menu.update(params[:menu].permit!)
+			@menu.update(menu_params)
 			return render json: {success: true, desc: "更新成功"}
 		end
 
@@ -46,10 +42,8 @@ module Background
 		end
 
 		private
-		def get_menu
-			if params[:id].present?
-				@menu = Menu.find(params[:id])
-			end
+		def menu_params
+			params.require(:menu).permit(:name, :controller_path, :menu_type, :description)
 		end
 
 	end

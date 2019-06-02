@@ -26,29 +26,28 @@ ActiveRecord::Schema.define(version: 2019_05_08_094004) do
     t.string "controller_path", comment: "系统菜单路径"
     t.string "system_menu_name", comment: "系统菜单名"
     t.string "description", comment: "菜单简述"
+    t.integer "menu_type", default: 1, comment: "菜单类别： 1 左侧显示菜单  2 隐藏菜单"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "pundit_group_roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "pundit_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "menu_id", comment: "菜单"
-    t.bigint "role_id", comment: "角色"
     t.string "controller_path", comment: "控制器（菜单）路径，例：background/menus "
     t.string "group_name", comment: "权限组，例： create"
     t.string "action_list", comment: "权限列表，例：new,create"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_pundit_group_roles_on_menu_id"
-    t.index ["role_id"], name: "index_pundit_group_roles_on_role_id"
+    t.index ["menu_id"], name: "index_pundit_groups_on_menu_id"
   end
 
-  create_table "role_menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "role_id", comment: "角色id"
-    t.bigint "menu_id", comment: "菜单id"
+  create_table "pundit_groups_roles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "role_id"
+    t.bigint "pundit_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_role_menus_on_menu_id"
-    t.index ["role_id"], name: "index_role_menus_on_role_id"
+    t.index ["pundit_group_id"], name: "index_pundit_groups_roles_on_pundit_group_id"
+    t.index ["role_id"], name: "index_pundit_groups_roles_on_role_id"
   end
 
   create_table "role_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -89,10 +88,7 @@ ActiveRecord::Schema.define(version: 2019_05_08_094004) do
 
   add_foreign_key "menu_roles", "menus"
   add_foreign_key "menu_roles", "roles"
-  add_foreign_key "pundit_group_roles", "menus"
-  add_foreign_key "pundit_group_roles", "roles"
-  add_foreign_key "role_menus", "menus"
-  add_foreign_key "role_menus", "roles"
+  add_foreign_key "pundit_groups", "menus"
   add_foreign_key "role_users", "roles"
   add_foreign_key "role_users", "users"
   add_foreign_key "user_images", "users"

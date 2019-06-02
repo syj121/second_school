@@ -17,7 +17,7 @@ class AuthsController < ApplicationController
 			session[:current_user] = {login_name: params[:login_name]} 
 			user.update(current_role_id: params[:role_id])
 			flash[:success] = "登录成功"
-			redirect_to background_users_path
+			redirect_to root_path
 		elsif flag
 			return render_error_page(401)
 		else

@@ -15,7 +15,7 @@
 						</label>
 						<div class="am-u-sm-9">
 							<div class="tpl-switch">
-								<%= check_box_tag "pundit_groups[#{menu[:menu_id]}][]", pundit_group[:pundit_group_id], @checked.include?(pundit_group[:pundit_group_id]), class: "ios-switch bigswitch tpl-switch-btn" %>
+								<%= check_box_tag "pundit_group_ids[]", pundit_group[:pundit_group_id], @checked.include?(pundit_group[:pundit_group_id]), class: "ios-switch bigswitch tpl-switch-btn" %>
 								<div class="tpl-switch-btn-view">
 								  <div></div>
 								</div>

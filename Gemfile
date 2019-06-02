@@ -79,3 +79,5 @@ gem 'mini_magick', '4.9.3'
 gem "simple_form", "4.1.0"
 #redis存储cache
 gem "redis-rails", "5.0.2"
+#权限插件
+gem "cancancan", "3.0.1"

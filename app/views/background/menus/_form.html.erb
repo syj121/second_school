@@ -20,12 +20,22 @@
 			</div>
 
 			<div class="am-form-group">
+				<label class="am-u-sm-3 am-form-label">菜单类别：</label>
+				<div class="am-u-sm-9">
+					<%= f.select :menu_type, Menu::MENU_TYPE.invert%>
+					<small></small>
+				</div>
+			</div>
+
+			<div class="am-form-group">
 				<label class="am-u-sm-3 am-form-label">菜单描述：</label>
 				<div class="am-u-sm-9">
 					<%= f.text_field :description%>
 					<small></small>
 				</div>
 			</div>
+
+
 
 			<%= render "shared/amaze/submit_button", f: f%>
 

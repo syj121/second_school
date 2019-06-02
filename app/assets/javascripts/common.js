@@ -22,6 +22,9 @@ $(function(){
 				if (data.success) {
 					parent.layer.closeAll()
 				}
+			},
+			error: function(data) {
+				layer.msg("系统异常，请稍后再试")
 			}
 		})
 		return false
