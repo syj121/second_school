@@ -25,7 +25,7 @@
 									<%= link_to_dialog edit_background_user_path(user), class: "am-btn am-btn-default am-btn-xs am-text-secondary",dialog: "common_dialog('编辑用户')" do %>
 										<span class="am-icon-pencil-square-o"></span> 编辑
 									<% end %>
-									<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only", onclick: "destroy_record('#{background_user_path(user)}')" do %>
+									<%= link_to_auth_void class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only", onclick: "destroy_record('#{background_user_path(user)}')", checked_url: background_user_path(user), checked_method: "DELETE" do %>
 										<span class="am-icon-trash-o"></span> 删除
 									<% end %>
 								</div>										

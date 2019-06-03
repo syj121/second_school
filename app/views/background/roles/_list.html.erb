@@ -6,6 +6,7 @@
 					<th>序号</th>
 					<th>角色名称</th>
 					<th>角色描述</th>
+					<th>角色类型</th>
 					<th>新增时间</th>
 					<th>操作</th>
 				</tr>
@@ -16,6 +17,7 @@
 						<td id="role_index_<%= index + 1%>"><%= index + 1%></td>
 						<td id="role_name_<%= role.id%>"><%= role.name%></td>
 						<td id="role_desc_<%= role.id%>"><%= role.desc%></td>
+						<td id="role_category_type_<%= role.id %>"><%= Role::CATEGORY_TYPE[role.category_type.to_sym]%></td>
 						<td id="role_index_<%= role.id%>"><%= l role.created_at%></td>
 						<td>										
 							<div class="am-btn-group am-btn-group-xs">
@@ -28,7 +30,7 @@
 								<%= link_to_dialog pundit_groups_background_role_path(role), class: "am-btn am-btn-default am-btn-xs am-text-secondar",dialog: "common_dialog('设置权限')" do %>
 									<span class="am-icon-pencil-square-o"></span> 权限
 								<% end %>
-								<%= link_to_void class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only", onclick: "destroy_record('#{background_role_path(role)}') " do %>
+								<%= link_to_auth_void class: "am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only", onclick: "destroy_record('#{background_role_path(role)}') ", checked_url: background_role_path(role), checked_method: "DELETE" do %>
 									<span class="am-icon-trash-o"></span> 删除
 								<% end %>
 							</div>										

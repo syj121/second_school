@@ -17,6 +17,14 @@
 				</div>
 			</div>
 
+			<div class="am-form-group">
+				<label class="am-u-sm-3 am-form-label">角色类型：</label>
+				<div class="am-u-sm-9">
+					<%= f.select :category_type, Role::CATEGORY_TYPE.invert%>
+					<small></small>
+				</div>
+			</div>
+
 			<%= render "shared/amaze/submit_button", f: f%>
 
 		<% end -%>

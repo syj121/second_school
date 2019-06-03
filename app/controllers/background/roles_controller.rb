@@ -91,7 +91,7 @@ module Background
 	  private
 	    # Never trust parameters from the scary internet, only allow the white list through.
 	    def role_params
-	      params.require(:role).permit(:name, :desc)
+	      params.require(:role).permit(:name, :desc, :category_type)
 	    end
 	end
 
